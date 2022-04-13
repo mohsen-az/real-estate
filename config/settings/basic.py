@@ -138,9 +138,12 @@ AUTH_USER_MODEL = "users.User"
 
 # Config Rest Framework
 REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": (
+    "DEFAULT_AUTHENTICATION_CLASSES": [
         "rest_framework_simplejwt.authentication.JWTAuthentication",
-    )
+        "rest_framework.authentication.SessionAuthentication",
+    ] if DEBUG else [
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ]
 }
 
 # Config Authentication

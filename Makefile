@@ -38,32 +38,6 @@ volume:
 estate-db:
 	docker-compose exec postgres-db psql --username=mohsen --dbname=estate
 
-test:
-	docker-compose exec api pytest -p no:warnings --cov=.
-
-test-report:
-	docker-compose exec api pytest -rP -p no:warnings --cov=.
-
-test-html:
-	docker-compose exec api pytest -p no:warnings --cov=. --cov-report html
-
 flake8:
 	docker-compose exec api flake8 .
 
-black-check:
-	docker-compose exec api black --check --exclude=migrations .
-
-black-diff:
-	docker-compose exec api black --diff --exclude=migrations .
-
-black:
-	docker-compose exec api black --exclude=migrations .
-
-isort-check:
-	docker-compose exec api isort . --check-only --skip env --skip migrations
-
-isort-diff:
-	docker-compose exec api isort . --diff --skip env --skip migrations
-
-isort:
-	docker-compose exec api isort . --skip env --skip migrations
